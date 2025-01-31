@@ -26,7 +26,7 @@ do
     Fluent:Notify({
         Title = "Notification",
         Content = "Join the discord server for updates and support at https://discord.gg/vBGaUY3fCy.",
-        SubContent = "SubContent", -- Optional
+        SubContent = "", -- Optional
         Duration = 5 -- Set to nil to make the notification not disappear
     })
 
