@@ -83,6 +83,15 @@ do
         end
     })
 
+    local Keybind = Tabs.KeyBinds:AddKeybind("Ball Magnet", {
+        Title = "Ball Magnet",
+        Mode = "Tap",
+        Default = "B",
+        ChangedCallback = function(New)
+            print("Keybind changed:", New)
+        end
+    })
+
 
 -- Addons:
 -- SaveManager (Allows you to have a configuration system)
