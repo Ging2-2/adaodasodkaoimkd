@@ -16,6 +16,7 @@ local Window = Fluent:CreateWindow({
 local Tabs = {
     Main = Window:AddTab({ Title = "Main", Icon = "" }),
     Physhics = Window:AddTab({ Title = "Physhics", Icon = "" }),
+    KeyBinds = Window:AddTab({ Title = "KeyBinds", Icon = "" })
     Settings = Window:AddTab({ Title = "Settings", Icon = "settings" })
 }
 
@@ -31,7 +32,9 @@ do
 
 
     local Toggle = Tabs.Main:AddToggle("Low Arc", {Title = "Low Arc", Default = false})
-    local Toggle = Tabs.Main:AddToggle("Low Arc", {Title = "High Arc", Default = false})
+    local Toggle = Tabs.Main:AddToggle("High Arc", {Title = "High Arc", Default = false})
+    local Toggle = Tabs.Main:AddToggle("Shot Indicator", {Title = "Shot Indicator", Default = false})
+    local Toggle = Tabs.Main:AddToggle("Auto Guard", {Title = "Auto Guard", Default = false})
 
     Toggle:OnChanged(function()
         print("Toggle changed:", Toggle.Value)
