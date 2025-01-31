@@ -74,7 +74,7 @@ do
 
     Slider:SetValue(3)
 
-    local Keybind = Tabs.Main:AddKeybind("Ball Reach", {
+    local Keybind = Tabs.KeyBinds:AddKeybind("Ball Reach", {
         Title = "Ball Reach",
         Mode = "Tap",
         Default = "X",
