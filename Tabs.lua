@@ -74,6 +74,15 @@ do
 
     Slider:SetValue(3)
 
+    local Keybind = Tabs.Main:AddKeybind("Ball Reach", {
+        Title = "Ball Reach",
+        Mode = "Tap",
+        Default = "X",
+        ChangedCallback = function(New)
+            print("Keybind changed:", New)
+        end
+    })
+
 
 -- Addons:
 -- SaveManager (Allows you to have a configuration system)
