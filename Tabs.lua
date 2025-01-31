@@ -47,7 +47,7 @@ do
 
 
     
-    local Slider = Tabs.Main:AddSlider("Slider", {
+    local Slider = Tabs.Settings:AddSlider("Slider", {
         Title = "Slider",
         Description = "This is a slider",
         Default = 2.0,
