@@ -15,6 +15,7 @@ local Window = Fluent:CreateWindow({
 --Fluent provides Lucide Icons https://lucide.dev/icons/ for the tabs, icons are optional
 local Tabs = {
     Main = Window:AddTab({ Title = "Main", Icon = "" }),
+    Physhics = Window:AddTab({ Title = "Physhics", Icon = "" }),
     Settings = Window:AddTab({ Title = "Settings", Icon = "settings" })
 }
 
@@ -47,17 +48,29 @@ do
 
 
     
-    local Slider = Tabs.Settings:AddSlider("Slider", {
-        Title = "Slider",
-        Description = "This is a slider",
+    local Slider = Tabs.Physhics:AddSlider("Slider", {
+        Title = "Ball Magnet",
+        Description = "",
         Default = 2.0,
         Min = 0.0,
-        Max = 15.5,
+        Max = 15,
         Rounding = 1
     })
 
     Slider:SetValue(3)
-    
+
+
+    local Slider = Tabs.Physhics:AddSlider("Slider", {
+        Title = "Ball Reach",
+        Description = "",
+        Default = 2.0,
+        Min = 0.0,
+        Max = 30,
+        Rounding = 1
+    })
+
+    Slider:SetValue(3)
+
 
 -- Addons:
 -- SaveManager (Allows you to have a configuration system)
@@ -65,7 +78,6 @@ do
 
 -- Hand the library over to our managers
 SaveManager:SetLibrary(Fluent)
-InterfaceManager:SetLibrary(Fluent)
 
 -- Ignore keys that are used by ThemeManager.
 -- (we dont want configs to save themes, do we?)
@@ -77,10 +89,8 @@ SaveManager:SetIgnoreIndexes({})
 -- use case for doing it this way:
 -- a script hub could have themes in a global folder
 -- and game configs in a separate folder per game
-InterfaceManager:SetFolder("FluentScriptHub")
 SaveManager:SetFolder("FluentScriptHub/specific-game")
 
-InterfaceManager:BuildInterfaceSection(Tabs.Settings)
 SaveManager:BuildConfigSection(Tabs.Settings)
 
 
@@ -95,3 +105,4 @@ Fluent:Notify({
 -- You can use the SaveManager:LoadAutoloadConfig() to load a config
 -- which has been marked to be one that auto loads!
 SaveManager:LoadAutoloadConfig()
+end
