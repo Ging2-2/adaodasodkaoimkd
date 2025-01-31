@@ -16,7 +16,7 @@ local Window = Fluent:CreateWindow({
 local Tabs = {
     Main = Window:AddTab({ Title = "Main", Icon = "" }),
     Physhics = Window:AddTab({ Title = "Physhics", Icon = "" }),
-    KeyBinds = Window:AddTab({ Title = "KeyBinds", Icon = "" })
+    KeyBinds = Window:AddTab({ Title = "KeyBinds", Icon = "" }),
     Settings = Window:AddTab({ Title = "Settings", Icon = "settings" })
 }
 
