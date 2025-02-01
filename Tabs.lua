@@ -1,3 +1,15 @@
+local groupId = 35553992 -- Replace with your group ID
+local player = game:GetService("Players").LocalPlayer
+
+if not player:IsInGroup(groupId) then
+    game:GetService("StarterGui"):SetCore("SendNotification", {
+        Title = "Access Denied",
+        Text = "You must be in the group to use this script!",
+        Duration = 5
+    })
+    return -- Stop execution if not in the group
+end
+
 local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
 local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
 local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
@@ -7,12 +19,11 @@ local Window = Fluent:CreateWindow({
     SubTitle = "By Dynamic",
     TabWidth = 160,
     Size = UDim2.fromOffset(580, 460),
-    Acrylic = true, -- The blur may be detectable, setting this to false disables blur entirely
+    Acrylic = true,
     Theme = "Dark",
-    MinimizeKey = Enum.KeyCode.LeftControl -- Used when theres no MinimizeKeybind
+    MinimizeKey = Enum.KeyCode.LeftControl
 })
 
---Fluent provides Lucide Icons https://lucide.dev/icons/ for the tabs, icons are optional
 local Tabs = {
     Main = Window:AddTab({ Title = "Main", Icon = "flame" }),
     Physhics = Window:AddTab({ Title = "Physhics", Icon = "hand" }),
@@ -22,117 +33,89 @@ local Tabs = {
 
 local Options = Fluent.Options
 
-do
-    Fluent:Notify({
-        Title = "Notification",
-        Content = "Join the discord server for updates and support at https://discord.gg/NkStU8CRKr.",
-        SubContent = "", -- Optional
-        Duration = 5 -- Set to nil to make the notification not disappear
-    })
+Fluent:Notify({
+    Title = "Notification",
+    Content = "Join the Discord server for updates and support at https://discord.gg/NkStU8CRKr.",
+    Duration = 5
+})
 
+local Toggle = Tabs.Main:AddToggle("Low Arc", {Title = "Low Arc", Default = false})
+local Toggle = Tabs.Main:AddToggle("High Arc", {Title = "High Arc", Default = false})
+local Toggle = Tabs.Main:AddToggle("Shot Indicator", {Title = "Shot Indicator", Default = false})
+local Toggle = Tabs.Main:AddToggle("Auto Guard", {Title = "Auto Guard", Default = false})
+local Toggle = Tabs.Main:AddToggle("Auto Power", {Title = "Auto Power", Default = false})
 
-    local Toggle = Tabs.Main:AddToggle("Low Arc", {Title = "Low Arc", Default = false})
-    local Toggle = Tabs.Main:AddToggle("High Arc", {Title = "High Arc", Default = false})
-    local Toggle = Tabs.Main:AddToggle("Shot Indicator", {Title = "Shot Indicator", Default = false})
-    local Toggle = Tabs.Main:AddToggle("Auto Guard", {Title = "Auto Guard", Default = false})
-    local Toggle = Tabs.Main:AddToggle("Auto Power", {Title = "Auto Power", Default = false})
+Toggle:OnChanged(function()
+    print("Toggle changed:", Toggle.Value)
+end)
 
-    Toggle:OnChanged(function()
-        print("Toggle changed:", Toggle.Value)
-    end)
-    
-    -- Add event listener for space bar key press
-    game:GetService("UserInputService").InputBegan:Connect(function(input)
-        if input.KeyCode == Enum.KeyCode.Space and Toggle.Value then
-            -- Code to shoot the ball goes here
-            print("Shooting the ball...")
-            -- Replace the print statement with your actual ball shooting code
-        end
-    end)
+game:GetService("UserInputService").InputBegan:Connect(function(input)
+    if input.KeyCode == Enum.KeyCode.Space and Toggle.Value then
+        print("Shooting the ball...")
+    end
+end)
 
+local Slider = Tabs.Physhics:AddSlider("Slider", {
+    Title = "Ball Magnet",
+    Default = 2.0,
+    Min = 0.0,
+    Max = 15,
+    Rounding = 1
+})
 
-    
-    local Slider = Tabs.Physhics:AddSlider("Slider", {
-        Title = "Ball Magnet",
-        Description = "",
-        Default = 2.0,
-        Min = 0.0,
-        Max = 15,
-        Rounding = 1
-    })
+Slider:SetValue(3)
 
-    Slider:SetValue(3)
+local Slider = Tabs.Physhics:AddSlider("Slider", {
+    Title = "Ball Reach",
+    Default = 2.0,
+    Min = 0.0,
+    Max = 30,
+    Rounding = 1
+})
 
+Slider:SetValue(3)
 
-    local Slider = Tabs.Physhics:AddSlider("Slider", {
-        Title = "Ball Reach",
-        Description = "",
-        Default = 2.0,
-        Min = 0.0,
-        Max = 30,
-        Rounding = 1
-    })
+local Keybind = Tabs.KeyBinds:AddKeybind("Ball Reach", {
+    Title = "Ball Reach",
+    Mode = "Tap",
+    Default = "X",
+    ChangedCallback = function(New)
+        print("Keybind changed:", New)
+    end
+})
 
-    Slider:SetValue(3)
+local Keybind = Tabs.KeyBinds:AddKeybind("Ball Magnet", {
+    Title = "Ball Magnet",
+    Mode = "Tap",
+    Default = "B",
+    ChangedCallback = function(New)
+        print("Keybind changed:", New)
+    end
+})
 
-    local Keybind = Tabs.KeyBinds:AddKeybind("Ball Reach", {
-        Title = "Ball Reach",
-        Mode = "Tap",
-        Default = "X",
-        ChangedCallback = function(New)
-            print("Keybind changed:", New)
-        end
-    })
+local Keybind = Tabs.KeyBinds:AddKeybind("Auto Guard", {
+    Title = "Auto Guard",
+    Mode = "Tap",
+    Default = "C",
+    ChangedCallback = function(New)
+        print("Keybind changed:", New)
+    end
+})
 
-    local Keybind = Tabs.KeyBinds:AddKeybind("Ball Magnet", {
-        Title = "Ball Magnet",
-        Mode = "Tap",
-        Default = "B",
-        ChangedCallback = function(New)
-            print("Keybind changed:", New)
-        end
-    })
+local Keybind = Tabs.KeyBinds:AddKeybind("Auto Power", {
+    Title = "Auto Power",
+    Mode = "Tap",
+    Default = "V",
+    ChangedCallback = function(New)
+        print("Keybind changed:", New)
+    end
+})
 
-    local Keybind = Tabs.KeyBinds:AddKeybind("Ball Magnet", {
-        Title = "Auto Guard",
-        Mode = "Tap",
-        Default = "C",
-        ChangedCallback = function(New)
-            print("Keybind changed:", New)
-        end
-    })
-
-    local Keybind = Tabs.KeyBinds:AddKeybind("Auto Power", {
-        Title = "Auto Power",
-        Mode = "Tap",
-        Default = "V",
-        ChangedCallback = function(New)
-            print("Keybind changed:", New)
-        end
-    })
-
-
--- Addons:
--- SaveManager (Allows you to have a configuration system)
--- InterfaceManager (Allows you to have a interface managment system)
-
--- Hand the library over to our managers
 SaveManager:SetLibrary(Fluent)
-
--- Ignore keys that are used by ThemeManager.
--- (we dont want configs to save themes, do we?)
 SaveManager:IgnoreThemeSettings()
-
--- You can add indexes of elements the save manager should ignore
 SaveManager:SetIgnoreIndexes({})
-
--- use case for doing it this way:
--- a script hub could have themes in a global folder
--- and game configs in a separate folder per game
 SaveManager:SetFolder("FluentScriptHub/specific-game")
-
 SaveManager:BuildConfigSection(Tabs.Settings)
-
 
 Window:SelectTab(1)
 
@@ -142,7 +125,4 @@ Fluent:Notify({
     Duration = 8
 })
 
--- You can use the SaveManager:LoadAutoloadConfig() to load a config
--- which has been marked to be one that auto loads!
 SaveManager:LoadAutoloadConfig()
-end
