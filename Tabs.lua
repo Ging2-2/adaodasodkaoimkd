@@ -35,6 +35,7 @@ do
     local Toggle = Tabs.Main:AddToggle("High Arc", {Title = "High Arc", Default = false})
     local Toggle = Tabs.Main:AddToggle("Shot Indicator", {Title = "Shot Indicator", Default = false})
     local Toggle = Tabs.Main:AddToggle("Auto Guard", {Title = "Auto Guard", Default = false})
+    local Toggle = Tabs.Main:AddToggle("Auto Power", {Title = "Auto Power", Default = false})
 
     Toggle:OnChanged(function()
         print("Toggle changed:", Toggle.Value)
