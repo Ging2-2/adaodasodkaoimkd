@@ -4,7 +4,7 @@ local player = game:GetService("Players").LocalPlayer
 if not player:IsInGroup(groupId) then
     game:GetService("StarterGui"):SetCore("SendNotification", {
         Title = "Access Denied",
-        Text = "You must be in the group to use this script!",
+        Text = "You must be in the Panadora group to use this script!",
         Duration = 5
     })
     return -- Stop execution if not in the group
