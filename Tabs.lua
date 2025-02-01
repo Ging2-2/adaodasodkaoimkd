@@ -25,7 +25,7 @@ local Options = Fluent.Options
 do
     Fluent:Notify({
         Title = "Notification",
-        Content = "Join the discord server for updates and support at https://discord.gg/vBGaUY3fCy.",
+        Content = "Join the discord server for updates and support at https://discord.gg/NkStU8CRKr.",
         SubContent = "", -- Optional
         Duration = 5 -- Set to nil to make the notification not disappear
     })
@@ -97,6 +97,15 @@ do
         Title = "Auto Guard",
         Mode = "Tap",
         Default = "C",
+        ChangedCallback = function(New)
+            print("Keybind changed:", New)
+        end
+    })
+
+    local Keybind = Tabs.KeyBinds:AddKeybind("Auto Power", {
+        Title = "Auto Power",
+        Mode = "Tap",
+        Default = "V",
         ChangedCallback = function(New)
             print("Keybind changed:", New)
         end
