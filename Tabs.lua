@@ -41,6 +41,8 @@ Fluent:Notify({
 
 local Toggle = Tabs.Main:AddToggle("Low Arc", {Title = "Low Arc", Default = false})
 local Toggle = Tabs.Main:AddToggle("High Arc", {Title = "High Arc", Default = false})
+local Toggle = Tabs.Main:AddToggle("Mobile Low Arc", {Title = "Mobile Low Arc", Default = false})
+local Toggle = Tabs.Main:AddToggle("Mobile High Arc", {Title = "Mobile High Arc", Default = false})
 local Toggle = Tabs.Main:AddToggle("Shot Indicator", {Title = "Shot Indicator", Default = false})
 local Toggle = Tabs.Main:AddToggle("Auto Guard", {Title = "Auto Guard", Default = false})
 local Toggle = Tabs.Main:AddToggle("Auto Power", {Title = "Auto Power", Default = false})
