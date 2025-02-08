@@ -1,10 +1,10 @@
-if not getgenv().PandoraExecuted then
+if not getgenv().CrystalExecuted then
 
     if not game:IsLoaded() then
         game.Loaded:Wait()
     end
     
-    getgenv().PandoraExecuted = true
+    getgenv().CrystalExecuted = true
 
     loadstring(game:HttpGet("https://raw.githubusercontent.com/EzWinsV4/FlameForRobloxRivals/refs/heads/main/Features/Aimlock.lua", true))()
     task.wait(1)
@@ -24,8 +24,8 @@ if not getgenv().PandoraExecuted then
     task.wait(1)
 
     game:GetService("StarterGui"):SetCore("SendNotification", {
-        Title = " 🔥 Pandora 🔥", 
-        Text = "Pandora for Rivals Script Executed!", 
+        Title = " 🔥 Crystal 🔥", 
+        Text = "Crystal for Rivals Script Executed!", 
         Duration = 4, 
         Button1 = "Cool"
     })
