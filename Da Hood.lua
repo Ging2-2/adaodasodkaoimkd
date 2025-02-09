@@ -2,11 +2,7 @@ local lib = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scri
 
 local win = lib:Window("Crystal Hub",Color3.fromRGB(44, 120, 224), Enum.KeyCode.LeftControl)
 
-local tab = win:Tab("Tab 1")
-
-tab:Button("Button", function()
-lib:Notification("Notification", "Hello!", "Hi!")
-end)
+local main = win:Tab("main")
 
 --> VARIABLES <--
 local plrs = game:GetService("Players")
