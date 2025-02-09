@@ -9,7 +9,7 @@ Main:Toggle("High Arc",false, function(t: any): ()
 print(t)
 end)
 
-Main:Slider("Speed Boost", 0, 1.8, 1, function(t)
+Main:Slider("Speed Boost", 0, 2, 1, function(t)
     -- Apply the speed boost multiplier
     local humanoid = game:GetService("Players").LocalPlayer.Character:FindFirstChild("Humanoid")
     
