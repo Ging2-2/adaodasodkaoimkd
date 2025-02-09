@@ -5,7 +5,7 @@ local win = lib:Window("Crystal Hub",Color3.new(0.886275, 0.603922, 1.000000), E
 local Main = win:Tab("Main")
 local Keybinds = win:Tab("Keybinds")
 
-Mainfunction(any: t): ()
+Main:Toggle("High Arc",false, function(t: any): ()
 print(t)
 end)
 
