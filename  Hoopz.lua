@@ -61,7 +61,7 @@ local tabs = {
 }
 
 local sections = {
-	MainSection1 = tabs.Main:Section({ Side = "Left" }),
+	MainSection1 = tabs.Main:Section({ Side = "Both" }),
 }
 
 sections.MainSection1:Slider({
