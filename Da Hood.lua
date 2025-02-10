@@ -1,8 +1,10 @@
 local lib = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/Vape.txt")()
 
-local win = lib:Window("Crystal Hub",Color3.fromRGB(44, 120, 224), Enum.KeyCode.LeftControl)
+local win = lib:Window("Crystal.wtf",Color3.fromRGB(44, 120, 224), Enum.KeyCode.LeftControl)
 
-local main = win:Tab("main")
+local Main = win:Tab("Main")
+local Visuals = win:Tab("Visuals")
+local Settings = win:Tab("Settings")
 
 --> VARIABLES <--
 local plrs = game:GetService("Players")
@@ -86,7 +88,7 @@ Toggle("Aimbot", false, function(state)
     print("Aimbot enabled:", state)
 end)
 
-tab:Slider("Slider",0,100,30, function(t)
+Main:Slider("Smoothness",0,100,0, function(t)
 print(t)
 end)
 
@@ -97,7 +99,3 @@ end)
 tab:Bind("Bind",Enum.KeyCode.RightShift, function()
 print("Pressed!")
 end)
-
-tab:Label("Label")
-
-end
