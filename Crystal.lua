@@ -30,7 +30,7 @@ local plr = game.Players.LocalPlayer
 local uis = game:GetService("UserInputService")
 local rs = game:GetService("RunService")
 
-local lib = loadstring(game:HttpGet(("https://raw.githubusercontent.com/shlexware/Orion/main/source")))()
+local lib = loadstring(game:HttpGet(("https://raw.githubusercontent.com/shlexwaree/Orion/refs/heads/main/source")))()
 local window = lib:MakeWindow({Name = "Crystal"})
 local main = window:MakeTab({Name = "Main"})
 
